@@ -1,0 +1,24 @@
+class Solution {
+public:
+    int subarraySum(vector<int>& nums, int k) {
+        int sum=0,count=0;
+
+        unordered_map<int,int> umap;
+        umap[0]=1;
+        for(int i=0;i<nums.size();i++){
+            
+            sum=sum+nums[i];
+
+            int rem= sum-k;
+
+            if(umap.find(rem) != umap.end()){
+                count+=umap[rem];
+            }
+
+            umap[sum]++;
+
+        }
+
+        return count;
+    }
+};
